@@ -53,7 +53,7 @@ class Paginator {
    * @async Uses Promises, awaiting for the Return key pressed.
    * @returns Promise, resolving in Boolean True.
    */
-  public async print(text:string, pageSize: number, options?:pageOptions) {
+  public async print(text:string, pageSize: number, options?: pageOptions) {
     if (parseFloat(pageSize.toFixed(0)) != pageSize) {
       throw Error('You cant pass a floating point number as pageSize')
     } else if (pageSize <= 0) {
