@@ -122,7 +122,7 @@ class Paginator {
    */
   private exit() {
     process.stdin.setRawMode(false)
-    process.stdin.destroy()
+    process.stdin.pause()
     this.savedText = this.actualText =  ''
     this.position = 0
     this.once = true
@@ -219,5 +219,6 @@ function clear() {
 const paginator = new Paginator()
 
 export {
-  paginator
+  paginator,
+  pageOptions
 }
