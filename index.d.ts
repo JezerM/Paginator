@@ -38,7 +38,7 @@ declare namespace paginator {
   /**
    * Defines the options
    */
-  async function options(options?: pageOptions) {
+  function options(options?: pageOptions) {
     this.message = options?.message || this.message || 'Paginated text:'
     this.suffix = options?.suffix || this.suffix || '(Use arrow keys)'
     this.exitMessage = options?.exitMessage || this.exitMessage || 'Press return button to exit'
