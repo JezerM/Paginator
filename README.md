@@ -1,7 +1,7 @@
 # **Paginator** 
 ## Split and show your text in console with user interaction
 This module allows you to split and fit the text in console, dividing it in pages which user can go through.\
-I decided to create this based on [Inquirer](https://www.npmjs.com/package/inquirer) paginator util used on its List prompt, 'cause it's quite useful when creating CLI.\
+I decided to create this based on [Inquirer](https://www.npmjs.com/package/inquirer) paginator util used on its List prompt, 'cause it's quite useful when creating CLI.
 ## **How this works**
 ```typescript
 paginator.print(text:string, pageSize: number, options?: pageOptions)
@@ -61,3 +61,6 @@ paginator.print(text, 10, {
   suffix: 'Use those arrows'
 })
 ```
+## **Know issues**
+- This doesn't work very well when text uses `\n` as breaklines.
+- With [chalk](https://link), when the formatted text is splitted in multiple lines, the text is not showed correctly.
