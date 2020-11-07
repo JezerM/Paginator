@@ -70,16 +70,17 @@ class Paginator {
     return await new Promise((resolve, reject) => {
       process.stdin.setRawMode(true)
       readline.emitKeypressEvents(process.stdin)
-      const obs = fromEvent(process.openStdin(), 'keypress')
+      var stdin = process.openStdin()
+      const obs = fromEvent(stdin, 'keypress')
       var piped = obs.pipe(
         map((x:any) => x[1])
       )
       var sus = piped.subscribe((key:any) => {
         // On Ctrl+C, process.exit()
         if (key && key.ctrl && key.name == 'c') {
+          resolve(true)
           this.exit()
           sus.unsubscribe()
-          resolve(true)
           process.exit()
         }
         // On Down arrow key, moves 
@@ -91,15 +92,15 @@ class Paginator {
         // If position is equal to last page and key pressed is Return, exits
         if (this.read_to_return == true) {
           if (key.name == 'return' && this.position >= this.savedText.split('\n').length - this.pageSize) {
+            resolve(true)
             this.exit()
             sus.unsubscribe()
-            resolve(true)
           }
         } else {
           if (key.name == 'return') {
+            resolve(true)
             this.exit()
             sus.unsubscribe()
-            resolve(true)
           }
         }
       })
@@ -121,6 +122,7 @@ class Paginator {
    */
   private exit() {
     process.stdin.setRawMode(false)
+    process.stdin.destroy()
     this.savedText = this.actualText =  ''
     this.position = 0
     this.once = true
