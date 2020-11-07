@@ -32,13 +32,13 @@ declare namespace paginator {
    * @async Uses Promises, awaiting for the Return key pressed.
    * @returns Promise, resolving in Boolean True.
    */
-  function print(text:string, pageSize: number, options?: pageOptions) {
+  async function print(text:string, pageSize: number, options?: pageOptions) {
     
   }
   /**
    * Defines the options
    */
-  function options(options?: pageOptions) {
+  async function options(options?: pageOptions) {
     this.message = options?.message || this.message || 'Paginated text:'
     this.suffix = options?.suffix || this.suffix || '(Use arrow keys)'
     this.exitMessage = options?.exitMessage || this.exitMessage || 'Press return button to exit'
@@ -47,5 +47,5 @@ declare namespace paginator {
 }
 export {
   paginator,
-  
+  pageOptions
 }
