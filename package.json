@@ -1,7 +1,7 @@
 {
   "name": "paginator",
   "version": "1.0.0",
-  "description": "Splits text in pages, waiting for user action to continue the code",
+  "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "main": "index.ts",
   "scripts": {
     "start": "ts-node ."
