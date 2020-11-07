@@ -1,6 +1,6 @@
 {
   "name": "cl-paginator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "homepage": "https://github.com/KaryonSH/Paginator",
   "main": "index.js",
