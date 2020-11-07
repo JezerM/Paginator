@@ -1,3 +1,3 @@
-const {paginator} = require('./lib/paginator')
+const {paginator} = require('./lib/paginator.js')
 
 exports.paginator = paginator

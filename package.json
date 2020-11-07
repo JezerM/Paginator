@@ -1,10 +1,13 @@
 {
   "name": "cl-paginator",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "homepage": "https://github.com/KaryonSH/Paginator",
-  
   "main": "index.js",
+  "files": [
+    "index.d.ts",
+    "index.js"
+  ],
   "scripts": {
     "start": "ts-node ."
   },
