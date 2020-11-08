@@ -1,6 +1,6 @@
 {
   "name": "cl-paginator",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "homepage": "https://github.com/JezerM/Paginator",
   "main": "index.js",
