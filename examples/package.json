@@ -1,0 +1,17 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "lorem": "ts-node lorem.ts",
+    "options": "ts-node options.ts",
+    "chalkie": "ts-node chalkie.ts",
+    "continues": "ts-node continues.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^9.0.0"
+  }
+}

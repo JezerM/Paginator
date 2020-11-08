@@ -5,6 +5,8 @@ import { fromEvent } from 'rxjs'
 import { map } from 'rxjs/operators'
 import readline from 'readline'
 import chalk from 'chalk';
+import sliceAnsi from 'slice-ansi'
+import stripAnsi from 'strip-ansi'
 
 interface pageOptions {
   /**
@@ -70,15 +72,14 @@ class Paginator {
     return await new Promise((resolve, reject) => {
       process.stdin.setRawMode(true)
       readline.emitKeypressEvents(process.stdin)
-      var stdin = process.openStdin()
-      const obs = fromEvent(stdin, 'keypress')
+      const obs = fromEvent(process.openStdin(), 'keypress')
       var piped = obs.pipe(
         map((x:any) => x[1])
       )
       var sus = piped.subscribe((key:any) => {
         // On Ctrl+C, process.exit()
         if (key && key.ctrl && key.name == 'c') {
-          resolve(true)
+          resolve()
           this.exit()
           sus.unsubscribe()
           process.exit()
@@ -92,13 +93,13 @@ class Paginator {
         // If position is equal to last page and key pressed is Return, exits
         if (this.read_to_return == true) {
           if (key.name == 'return' && this.position >= this.savedText.split('\n').length - this.pageSize) {
-            resolve(true)
+            resolve()
             this.exit()
             sus.unsubscribe()
           }
         } else {
           if (key.name == 'return') {
-            resolve(true)
+            resolve()
             this.exit()
             sus.unsubscribe()
           }
@@ -186,27 +187,45 @@ class Paginator {
    */
   private format() {
     var maxColumns = process.stdout.columns
-    var wordArr = this.supSaved.split(' ')
+    var linesArr = this.supSaved.split('\n')
     var finalText = ''
-    var line = ''
-    wordArr.forEach((word, index, arr) => {
-      if ((line + word).length > maxColumns) {
-        if ((line).split('')[line.length-1] == ' ') { // If last character of line is an empty space, delete it
-          line = line.slice(0, line.length-1)
-        }
-        finalText += line + '\n'
-        line = ''
+    linesArr.forEach((value, indexLines, arrLines) => {
+      var wordArr = value.split(' ')
+      var line = ''
+      if (indexLines != 0) {
+        finalText += '\n'
       }
-      line += word + ' '
+      var last = 0
+      wordArr.forEach((valueW, indexW, arr) => {
+        var actual = stripAnsi(valueW) // Erases ansi codes in every word
+        var finalWord = sliceAnsi(value, last + indexW, last + indexW + actual.length) // Slices the real text, keeping ansi codes
+        last += actual.length
+        arr[indexW] = finalWord
+      })
+
+      wordArr.forEach((word, indexWord, arrWords) => {
+        var lolLine = stripAnsi(line)
+        var lolWord = stripAnsi(word)
+
+        if ((lolLine + lolWord).length > maxColumns) {
+          if (lolLine[lolLine.length-1] === ' ') { // If last character of line is an empty space, delete it
+            line = sliceAnsi(line, 0, lolLine.length-1)
+          }
+          finalText += line + '\n'
+          line = ''
+        }
+        line += word + ' '
+      })
+      
+      if (line.length > 0) {
+        finalText += line
+      }
     })
-    if (line.length > 0) {
-      finalText += line
-    }
     var lines = finalText.split('\n')
-    this.savedText = finalText
     if (this.pageSize >= lines.length) {
       this.pageSize = finalText.split('\n').length
     }
+    this.savedText = finalText
   }
 }
 /**
@@ -221,4 +240,10 @@ const paginator = new Paginator()
 export {
   paginator,
   pageOptions
+}
+const print = paginator.print
+const options = paginator.options
+export default {
+  print,
+  options
 }

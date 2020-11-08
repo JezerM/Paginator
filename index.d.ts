@@ -1,6 +1,6 @@
 declare module 'clpaginator'
 
-export interface pageOptions {
+interface pageOptions {
   /**
    * Shows an static message above the text.
    */
@@ -32,18 +32,11 @@ declare namespace paginator {
    * @async Uses Promises, awaiting for the Return key pressed.
    * @returns Promise, resolving in Boolean True.
    */
-  async function print(text:string, pageSize: number, options?: pageOptions) {
-    
-  }
+  function print(text:string, pageSize: number, options?: pageOptions): Promise<void>
   /**
    * Defines the options
    */
-  function options(options?: pageOptions) {
-    this.message = options?.message || this.message || 'Paginated text:'
-    this.suffix = options?.suffix || this.suffix || '(Use arrow keys)'
-    this.exitMessage = options?.exitMessage || this.exitMessage || 'Press return button to exit'
-    this.read_to_return = options?.read_to_return != undefined ? options.read_to_return : (this.read_to_return != undefined ? this.read_to_return : true)
-  }
+  function options(options?: pageOptions)
 }
 export {
   paginator,
