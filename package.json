@@ -1,13 +1,14 @@
 {
   "name": "cl-paginator",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "homepage": "https://github.com/JezerM/Paginator",
   "main": "",
   "files": [
     "index.d.ts",
     "ts/paginator.ts",
-    "index.js"
+    "index.js",
+    "tsconfig.json"
   ],
   "scripts": {
     "start": "ts-node .",
