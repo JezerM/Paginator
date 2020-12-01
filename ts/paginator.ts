@@ -79,7 +79,7 @@ class Paginator {
       var sus = piped.subscribe((key:any) => {
         // On Ctrl+C, process.exit()
         if (key && key.ctrl && key.name == 'c') {
-          resolve()
+          resolve(true)
           this.exit()
           sus.unsubscribe()
           process.exit()
@@ -93,13 +93,13 @@ class Paginator {
         // If position is equal to last page and key pressed is Return, exits
         if (this.read_to_return == true) {
           if (key.name == 'return' && this.position >= this.savedText.split('\n').length - this.pageSize) {
-            resolve()
+            resolve(true)
             this.exit()
             sus.unsubscribe()
           }
         } else {
           if (key.name == 'return') {
-            resolve()
+            resolve(true)
             this.exit()
             sus.unsubscribe()
           }
