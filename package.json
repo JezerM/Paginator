@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "start": "ts-node .",
-    "install": "tsc"
+    "postinstall": "tsc"
   },
   "keywords": [
     "cli",
