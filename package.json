@@ -1,6 +1,6 @@
 {
   "name": "cl-paginator",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "homepage": "https://github.com/JezerM/Paginator",
   "main": "index.js",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "start": "ts-node .",
-    "prepublish": "tsc"
+    "install": "tsc"
   },
   "keywords": [
     "cli",
@@ -45,6 +45,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/KaryonSH/Paginator"
+    "url": "https://github.com/JezerM/Paginator"
   }
 }

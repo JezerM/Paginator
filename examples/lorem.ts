@@ -1,5 +1,7 @@
-import {paginator} from '../'
+import {Paginator} from '../'
 const fs = require('fs')
+
+var paginator = new Paginator()
 
 var lorem = ''
 try {

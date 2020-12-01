@@ -44,7 +44,7 @@ class Paginator {
   private exitMessage: string | undefined
   private read_to_return: boolean | undefined
 
-  constructor () {}
+  constructor (options?: pageOptions) {this.options(options)}
 
   /**
    * Capture key arrows for moving the text UP and DOWN with a determinate PageSize.
@@ -235,15 +235,7 @@ function clear() {
   process.stdout.write(ansiEscapes.cursorTo(0,0) + ansiEscapes.clearTerminal + ansiEscapes.cursorHide)
 }
 
-const paginator = new Paginator()
-
 export {
-  paginator,
+  Paginator,
   pageOptions
-}
-const print = paginator.print
-const options = paginator.options
-export default {
-  print,
-  options
 }

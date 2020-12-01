@@ -1,5 +1,7 @@
 import chalk from 'chalk'
-import {paginator} from '..'
+import {Paginator} from '..'
+
+var paginator = new Paginator()
 
 var lorem = chalk`{dim Lorem ipsum dolor sit amet}, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque felis imperdiet proin fermentum. Consectetur a erat nam at lectus urna duis convallis convallis. Posuere urna nec tincidunt praesent. Venenatis tellus in metus vulputate eu. Turpis tincidunt id aliquet risus feugiat in ante metus dictum. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Sit amet purus gravida quis blandit turpis. At tempor commodo ullamcorper a lacus vestibulum sed arcu non. {greenBright.bold Rhoncus aenean vel elit scelerisque mauris pellentesque.} Pharetra vel turpis nunc eget. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Varius vel pharetra vel turpis nunc. Adipiscing diam donec adipiscing tristique risus nec. Aliquam ut porttitor leo a diam sollicitudin tempor id. Bibendum at varius vel pharetra vel. {bold Consequat nisl vel pretium lectus quam id. Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit amet. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Pharetra et ultrices neque ornare aenean euismod.
 

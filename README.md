@@ -8,8 +8,10 @@ $ npm install cl-paginator
 ```
 ## **Usage**
 ```ts
-import { paginator } from 'cl-paginator'
-// const { paginator } = require('cl-paginator')
+import { Paginator } from 'cl-paginator'
+// const { Paginator } = require('cl-paginator')
+
+var paginator = new Paginator(/* PageOptions */)
 
 paginator.options({/* PageOptions */})
 paginator.print(/* just text*/, /* number of pages*/, /* PageOptions*/)

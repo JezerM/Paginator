@@ -18,11 +18,18 @@ interface pageOptions {
    */
   read_to_return?: boolean
 }
+
 /**
  * Allows to paginate or split the text in the console, moving the page with arrow keys, awaiting for user action to continue the code.
- * @async It's preffered to use Await/Async to avoid executing next code without waiting user action.
+ * @class Initialize a new instance of Paginator
  */
-declare namespace paginator {
+declare class Paginator {
+  /**
+   * Initialize a new instance of Paginator
+   * @param options You could set options initially
+   */
+  constructor(options?: pageOptions)
+
   /**
    * Capture key arrows for moving the text UP and DOWN with a determinate PageSize.
    * Use Message option for show an static text above the text.
@@ -32,13 +39,15 @@ declare namespace paginator {
    * @async Uses Promises, awaiting for the Return key pressed.
    * @returns Promise, resolving in Boolean True.
    */
-  function print(text:string, pageSize: number, options?: pageOptions): Promise<void>
+  public print(text:string, pageSize: number, options?: pageOptions): Promise<void>
+
   /**
    * Defines the options
    */
-  function options(options?: pageOptions)
+  public options(options?: pageOptions)
 }
+
 export {
-  paginator,
-  pageOptions
+  pageOptions,
+  Paginator
 }
