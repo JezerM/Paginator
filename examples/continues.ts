@@ -11,8 +11,9 @@ try {
   console.error(err)
 }
 (async () => {
-  await paginator.print(lorem, 10)
-  await paginator.print(chalk.bold.green(lorem), 10, {
+  await paginator.print(lorem, {pageSize: 10})
+  await paginator.print(chalk.bold.green(lorem),{
+    pageSize: 10,
     read_to_return: false
   })
 })()

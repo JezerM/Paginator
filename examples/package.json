@@ -6,7 +6,8 @@
     "lorem": "ts-node lorem.ts",
     "options": "ts-node options.ts",
     "chalkie": "ts-node chalkie.ts",
-    "continues": "ts-node continues.ts"
+    "continues": "ts-node continues.ts",
+    "streams": "ts-node streams.ts"
   },
   "keywords": [],
   "author": "",

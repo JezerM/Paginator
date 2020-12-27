@@ -9,4 +9,4 @@ try {
 } catch (err) {
   console.error(err)
 }
-paginator.print(lorem, 10) // Shows 10 lines per page
+paginator.print(lorem, {pageSize: 10}) // Shows 10 lines per page

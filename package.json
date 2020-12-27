@@ -1,23 +1,21 @@
 {
   "name": "cl-paginator",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "homepage": "https://github.com/JezerM/Paginator",
   "main": "",
   "files": [
     "index.d.ts",
-    "ts/paginator.ts",
-    "index.js",
-    "tsconfig.json"
+    "lib/paginator.js",
+    "index.js"
   ],
   "scripts": {
-    "start": "ts-node .",
-    "postinstall": "tsc"
+    "start": "ts-node ."
   },
   "keywords": [
     "cli",
     "command line",
-    "shel",
+    "shell",
     "paginator",
     "string",
     "formatted text",
@@ -31,19 +29,19 @@
   "license": "ISC",
   "dependencies": {
     "ansi-escapes": "^4.3.1",
+    "ansi-regex": "^5.0.0",
     "chalk": "^4.1.0",
     "figures": "^3.2.0",
     "rxjs": "^6.6.3",
     "slice-ansi": "^4.0.0",
-    "strip-ansi": "^6.0.0",
+    "strip-ansi": "^6.0.0"
+  },
+  "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/node": "^14.14.6",
     "@types/slice-ansi": "^4.0.0",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
-  },
-  "devDependencies": {
-    
   },
   "repository": {
     "type": "git",

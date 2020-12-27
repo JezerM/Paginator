@@ -9,7 +9,8 @@ try {
 } catch (err) {
   console.error(err)
 }
-paginator.print(lorem, 10, {
+paginator.print(lorem, {
+  pageSize: 10,
   exitMessage: 'Please, press return to exit :D',
   message: 'A big lorem ipsum!',
   suffix: 'Use those arrows',

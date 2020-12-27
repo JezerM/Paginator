@@ -2,6 +2,10 @@ declare module 'clpaginator'
 
 interface pageOptions {
   /**
+   * Defines the max number of lines to show in console. Use a positive integer.
+   */
+  pageSize?: number,
+  /**
    * Shows an static message above the text.
    */
   message?: string
@@ -14,9 +18,21 @@ interface pageOptions {
    */
   exitMessage?: string
   /**
-   * If true, defines if is neccesary to go trough all the pages to continue.
+   * If true, defines if is neccesary to go trough all the pages to continue
    */
-  read_to_return?: boolean
+  read_to_return?: boolean,
+  /**
+   * The WritableStream to write on, such as process.stdout
+   */
+  writable?: NodeJS.WritableStream
+  /**
+   * The ReadStream to read on, such as process.stdin
+   */
+  readable?: NodeJS.ReadStream
+  /**
+   * The Socket to read the keypress, such as process.openStdin
+   */
+  socket?: () => NodeJS.Socket
 }
 
 /**
@@ -34,12 +50,11 @@ declare class Paginator {
    * Capture key arrows for moving the text UP and DOWN with a determinate PageSize.
    * Use Message option for show an static text above the text.
    * @param {string} text Defines the text to split up and fit in the console.
-   * @param {number} pageSize Defines the max number of lines to show in console. Use a positive integer.
    * @param {pageOptions | undefined} options Defines the options.
    * @async Uses Promises, awaiting for the Return key pressed.
    * @returns Promise, resolving in Boolean True.
    */
-  public print(text:string, pageSize: number, options?: pageOptions): Promise<void>
+  public print(text:string, options?: pageOptions): Promise<void>
 
   /**
    * Defines the options
