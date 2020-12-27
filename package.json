@@ -9,9 +9,6 @@
     "lib/paginator.js",
     "index.js"
   ],
-  "scripts": {
-    "start": "ts-node ."
-  },
   "keywords": [
     "cli",
     "command line",
