@@ -136,14 +136,14 @@ class Paginator {
    * Defines the options
    */
   public options(options?: pageOptions) {
-    this.opts.message = options?.message || defaultOptions.message
-    this.opts.exitMessage = options?.exitMessage || defaultOptions.exitMessage
-    this.opts.pageSize = options?.pageSize || defaultOptions.pageSize
-    this.opts.read_to_return = options?.read_to_return != undefined ? options?.read_to_return : defaultOptions.read_to_return
-    this.opts.suffix = options?.suffix || defaultOptions.suffix
-    this.opts.writable = options?.writable || defaultOptions.writable
-    this.opts.readable = options?.readable || defaultOptions.readable
-    this.opts.socket = options?.socket || defaultOptions.socket
+    this.opts.message = options?.message || (this.opts.message || defaultOptions.message)
+    this.opts.exitMessage = options?.exitMessage || (this.opts.exitMessage || defaultOptions.exitMessage)
+    this.opts.pageSize = options?.pageSize || (this.opts.pageSize || defaultOptions.pageSize)
+    this.opts.read_to_return = options?.read_to_return != undefined ? options?.read_to_return : (this.opts.read_to_return || defaultOptions.read_to_return)
+    this.opts.suffix = options?.suffix || (this.opts.suffix || defaultOptions.suffix)
+    this.opts.writable = options?.writable || (this.opts.writable || defaultOptions.writable)
+    this.opts.readable = options?.readable || (this.opts.readable || defaultOptions.readable)
+    this.opts.socket = options?.socket || (this.opts.socket || defaultOptions.socket)
   }
 
   /**

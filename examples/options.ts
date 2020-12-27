@@ -2,6 +2,12 @@ import { Paginator } from '../'
 const fs = require('fs')
 
 var paginator = new Paginator() // You can set options initially
+var pagCustom = new Paginator({
+  exitMessage: 'Please, press return to exit :D',
+  message: 'A big lorem ipsum!',
+  suffix: 'Use those arrows',
+  read_to_return: true
+})
 
 var lorem = ''
 try {
@@ -9,10 +15,8 @@ try {
 } catch (err) {
   console.error(err)
 }
-paginator.print(lorem, {
-  pageSize: 10,
-  exitMessage: 'Please, press return to exit :D',
-  message: 'A big lorem ipsum!',
-  suffix: 'Use those arrows',
-  read_to_return: false
-})
+
+(async () => {
+  await paginator.print(lorem)
+  await pagCustom.print(lorem, {pageSize: 10, message: 'Really, a big lorem ipsum!'})
+})()

@@ -14,7 +14,7 @@ import { Paginator } from 'cl-paginator'
 var paginator = new Paginator(/* PageOptions */)
 
 paginator.options({/* PageOptions */})
-paginator.print(/* just text*/, /* PageOptions*/)
+paginator.print(/* just text*/, /* PageOptions */)
 ```
 Also, you can try it on [Repl.it](https://repl.it/@JezerM/Paginator-test)
 ## **How this works**
@@ -74,6 +74,8 @@ interface pageOptions {
 Also, you can define the default options to be used in every print.
 ```typescript
 paginator.options(options?: pageOptions)
+// or
+var pagCustom = new Paginator(options?: pageOptions)
 ```
 
 ## **Examples**
