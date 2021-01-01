@@ -58,10 +58,10 @@ class readline extends WriteStream {
 
 var paginator = new Paginator();
 
-var rl = new readline()
+var writable = new readline()
 
-// When paginator writes something on 'rl', logs it.
-rl.on('writed', (d: string) => {
+// When paginator writes something on 'writable', logs it.
+writable.on('writed', (d: string) => {
   process.stdout.write(d)
 })
 
@@ -72,5 +72,15 @@ var lorem = chalk`{dim Lorem ipsum dolor sit amet}, consectetur adipiscing elit,
 paginator.print(lorem, {
   pageSize: 10,
   read_to_return: true,
-  writable: rl // Sets the WritableStream or WriteStream to write on. In this case, this is saving all the data in the 'rl' instance, which you can access on 'writed' event. This behavior is practically the same as process.stdout.write()
+  writable: writable // Sets the WritableStream or WriteStream to write on. In this case, this is saving all the data in the 'rl' instance, which you can access on 'writed' event. This behavior is practically the same as process.stdout.write()
+}).then(() => {
+  console.log('Now, we print ALL the data that passed throught the writable');
+  
+  setTimeout(() => {
+    var data = writable.all
+    clearAnsi.forEach((v) => {
+      data = data.replace(v, '')
+    })
+    console.log([data])
+  }, 3000)
 })

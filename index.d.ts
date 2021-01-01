@@ -22,17 +22,17 @@ interface pageOptions {
    */
   read_to_return?: boolean,
   /**
-   * The WritableStream to write on, such as process.stdout
+   * The WriteStream to write on, such as process.stdout
    */
-  writable?: NodeJS.WritableStream
+  writable?: NodeJS.WriteStream
   /**
    * The ReadStream to read on, such as process.stdin
    */
   readable?: NodeJS.ReadStream
   /**
-   * The Socket to read the keypress, such as process.openStdin
+   * Sets the maximum number of columns and rows.
    */
-  socket?: () => NodeJS.Socket
+  terminal?: {columns: number, rows: number}
 }
 
 /**
@@ -54,12 +54,38 @@ declare class Paginator {
    * @async Uses Promises, awaiting for the Return key pressed.
    * @returns Promise, resolving in Boolean True.
    */
-  public print(text:string, options?: pageOptions): Promise<void>
+  public print(text:string, options?: pageOptions): Promise<this>
 
   /**
    * Defines the options
    */
-  public options(options?: pageOptions)
+  public options(options?: pageOptions): this
+  /**
+   * Ends the paginator
+   */
+  public end(): this
+
+  /**
+   * Gets the number of pages the paginator have
+   */
+  public pages: number
+
+  /**
+   * Gets or sets the actual position in paginator
+   */
+  public get position(): number
+  
+  public set position(v: number)
+
+  /**
+   * Gets the actualText, the one is writed on WriteStream
+   */
+  public get actualText(): string
+
+  /**
+   * Gets the options
+   */
+  public opts: pageOptions
 }
 
 export {
