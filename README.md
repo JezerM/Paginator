@@ -1,8 +1,8 @@
 [Inquirer]: https://www.npmjs.com/package/inquirer
-[Replit]: https://repl.it/@JezerM/Paginator-test
+[Repl.it]: https://repl.it/@JezerM/Paginator-test
 [rxjs]: https://www.npmjs.com/package/rxjs
-[ansiescapes]: https://www.npmjs.com/package/ansi-escapes
-[ansiregex]: https://www.npmjs.com/package/ansi-regex
+[Ansi-Escapes]: https://www.npmjs.com/package/ansi-escapes
+[Ansi-Regex]: https://www.npmjs.com/package/ansi-regex
 
 [Lorem]: https://user-images.githubusercontent.com/59768785/103432523-ca42e200-4ba5-11eb-9987-e0013fcec7c3.gif
 [Chalkie]: https://user-images.githubusercontent.com/59768785/103432543-142bc800-4ba6-11eb-99c4-e47f128a4462.gif
@@ -13,7 +13,7 @@
 # **Cl-Paginator**
 ## **Split and show your text in console with user interaction**
 This Node.js module allows you to split and fit the text in console, dividing it in pages which user can go through.\
-I decided to create this based on [Inquirer](Inquirer) paginator util used on some prompts, 'cause it's quite useful when creating a CLI.
+I decided to create this based on [Inquirer] paginator util used on some prompts, 'cause it's quite useful when creating a CLI.
 ![Lorem]
 
 ## **Getting started**
@@ -31,7 +31,7 @@ var paginator = new Paginator(/* PageOptions */)
 paginator.options({/* PageOptions */})
 paginator.print(/* just text*/, /* PageOptions */)
 ```
-Also, you can try it on [Repl.it](Replit)
+Also, you can try it on [Repl.it]
 ## **How this works**
 ```ts
 paginator.print(text: string, options?: pageOptions)
@@ -184,8 +184,8 @@ paginator.print(text, {
 #### `Writable`
 This needs just a bit of configuration, unless you want to make it really useful, such as storing every *chunk* that is writed in the instance.\
 **Recommendation**: As this package is oriented to be used in a console, it uses Ansi Escapes to do a lot of things, like erasing the console or hiding/showing the cursor, I recommend you to use a filter that erases all your data when this kind of Ansi Escapes are writed.\
-[Ansi-Escapes](ansiescapes),
-[Ansi-Regex](ansiregex)
+[Ansi-Escapes],
+[Ansi-Regex]
 ```ts
 const clearAnsi = ['\x1B[0J', ansiEscapes.clearScreen, ansiEscapes.clearTerminal, /* and so on... */]
 
@@ -225,5 +225,3 @@ readable.emitKey({ name: 'c', ctrl: true }) // Exits the program
 
 ## **Know issues**
 - It's possible that Streams don't work properly, please let me know if there's any problem.
-
-Actually, these problems have been solved.
