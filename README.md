@@ -11,10 +11,10 @@
 [Options]: https://user-images.githubusercontent.com/59768785/103432558-61a83500-4ba6-11eb-80b1-3658d736d3df.gif
 
 # **Cl-Paginator**
-![Lorem]
 ## **Split and show your text in console with user interaction**
 This Node.js module allows you to split and fit the text in console, dividing it in pages which user can go through.\
 I decided to create this based on [Inquirer](Inquirer) paginator util used on some prompts, 'cause it's quite useful when creating a CLI.
+![Lorem]
 
 ## **Getting started**
 ### **Installation**
