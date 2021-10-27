@@ -2,17 +2,22 @@
   "name": "examples",
   "version": "1.0.0",
   "description": "",
+	"type": "module",
   "scripts": {
-    "lorem": "ts-node lorem.ts",
-    "options": "ts-node options.ts",
-    "chalkie": "ts-node chalkie.ts",
-    "continues": "ts-node continues.ts",
-    "streams": "ts-node streams.ts"
+		"build": "tsc",
+    "lorem": "node js/lorem.js",
+    "options": "node js/options.js",
+    "chalkie": "node js/chalkie.js",
+    "continues": "node js/continues.js",
+    "streams": "node js/streams.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ansi-escapes": "^5.0.0",
+    "ansi-regex": "^6.0.1",
+    "chalk": "^4.1.2",
     "ts-node": "^9.0.0"
   }
 }
