@@ -1,6 +1,6 @@
 {
   "name": "cl-paginator",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "description": "Splits text in pages to show in console, waiting for user interaction to continue the code",
   "homepage": "https://github.com/JezerM/Paginator",
   "main": "",
@@ -25,12 +25,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "ansi-escapes": "^4.3.1",
     "ansi-regex": "^5.0.0",
     "chalk": "^4.1.0",
-    "figures": "^3.2.0",
-    "rxjs": "^6.6.3",
-    "slice-ansi": "^4.0.0",
     "strip-ansi": "^6.0.0"
   },
   "devDependencies": {

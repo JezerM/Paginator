@@ -1,42 +1,58 @@
-declare module 'clpaginator'
+import chalk, { Chalk } from "chalk";
+
+declare module "clpaginator";
 
 interface pageOptions {
   /**
-   * Defines the max number of lines to show in console. Use a positive integer.
+   * Defines the max number of lines to show in console. Use a positive integer
+   * @default 5
    */
-  pageSize?: number,
+  page_size?: number;
   /**
-   * Shows an static message above the text.
+   * Shows an static message above the text
+   * @default "Paginated text:"
    */
-  message?: string
+  message?: string;
   /**
-   * Shows an static, dim message for help, like '(Use arrow keys)'
+   * Shows a short suffix to help the user
+   * @default "(Use arrow keys)"
    */
-  suffix?: string
+  suffix?: string;
   /**
-   * Shows a message for help to continue executing the code. 'Press return button to exit'
+   * Shows a message for help to continue executing the code
+   * @default "Press return key to exit"
    */
-  exitMessage?: string
+  exit_message?: string;
   /**
-   * If true, defines if is neccesary to go trough all the pages to continue
+   * Whether it's necessary to read all (going to bottom) or not to quit
+   * @default true
    */
-  read_to_return?: boolean,
+  read_to_return?: boolean;
   /**
-   * The WriteStream to write on, such as process.stdout
+   * The `NodeJS.WriteStream` to write on
+   * @default process.stdout
    */
-  writable?: NodeJS.WriteStream
+  writable?: NodeJS.WriteStream;
   /**
-   * The ReadStream to read on, such as process.stdin
+   * The `NodeJS.ReadStream` to read from
+   * @default process.stdin
    */
-  readable?: NodeJS.ReadStream
+  readable?: NodeJS.ReadStream;
   /**
    * Sets the maximum number of columns and rows.
+   * @default { cols: 0, rows: 0 } // Automatic
    */
-  terminal?: {columns: number, rows: number}
+  terminal?: { cols?: number; rows?: number };
+  /**
+   * Sets the paginator style
+   * @default { }
+   */
+  style?: { enum?: Chalk };
 }
 
 /**
- * Allows to paginate or split the text in the console, moving the page with arrow keys, awaiting for user action to continue the code.
+ * Allows to paginate or trunk the text in the console, moving it with arrow keys and awaiting for user interaction to continue the code.
+ * @async It's preffered to use await/async to avoid executing next code without user action
  * @class Initialize a new instance of Paginator
  */
 declare class Paginator {
@@ -44,51 +60,59 @@ declare class Paginator {
    * Initialize a new instance of Paginator
    * @param options You could set options initially
    */
-  constructor(options?: pageOptions)
+  constructor(options?: pageOptions);
 
   /**
-   * Capture key arrows for moving the text UP and DOWN with a determinate PageSize.
-   * Use Message option for show an static text above the text.
+   * Captures key arrows to move the text UP and DOWN with a determinate `page_size`.
+   * Use `message` option to show an static text above the text.
    * @param {string} text Defines the text to split up and fit in the console.
    * @param {pageOptions | undefined} options Defines the options.
-   * @async Uses Promises, awaiting for the Return key pressed.
+   * @async Uses promises, awaiting for the Return key to be pressed.
    * @returns Promise, resolving in Boolean True.
    */
-  public print(text:string, options?: pageOptions): Promise<this>
+  public print(text: string, options?: pageOptions): Promise<this>;
+
+  /**
+   * Updates the text
+   */
+  public update_text(): void;
 
   /**
    * Defines the options
    */
-  public options(options?: pageOptions): this
+  public options(options?: pageOptions): this;
   /**
    * Ends the paginator
    */
-  public end(): this
+  public end(): this;
 
   /**
    * Gets the number of pages the paginator have
    */
-  public pages: number
+  public pages: number;
 
   /**
    * Gets or sets the actual position in paginator
    */
-  public get position(): number
-  
-  public set position(v: number)
+  public get position(): number;
+
+  public set position(v: number);
 
   /**
-   * Gets the actualText, the one is writed on WriteStream
+   * Gets the actual text, the one is writed on WriteStream
    */
-  public get actualText(): string
+  public get actual_text(): string;
+  /**
+   * Gets the saved text, the one passed as argument to `Paginator.print`
+   */
+  public get saved_text(): string;
 
   /**
    * Gets the options
    */
-  public opts: pageOptions
+  public opts: Required<pageOptions>;
 }
 
-export {
-  pageOptions,
-  Paginator
-}
+declare const defaultOptions: Required<pageOptions>;
+
+export { pageOptions, Paginator, defaultOptions };
