@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "es2020",
+    "outDir": "./js/",
+		"rootDir": "./ts/",
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+  },
+  "include": [
+    "./ts/",
+  ],
+}
